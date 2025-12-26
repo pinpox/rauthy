@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Nix Build <nix@build>
+Subject: [PATCH] Build svelte files inside the current directory
+
+This patch modifies the SvelteKit adapter configuration to output
+build artifacts within the frontend directory instead of the parent
+directory, which is required for the Nix build sandbox.
+
+---
+ frontend/svelte.config.js | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/frontend/svelte.config.js b/frontend/svelte.config.js
+index 1111111..2222222 100644
+--- a/frontend/svelte.config.js
++++ b/frontend/svelte.config.js
+@@ -12,8 +12,8 @@ const config = {
+         },
+         adapter: adapter({
+             fallback: null,
+-            pages: '../templates/html',
+-            assets: '../static/v1',
++            pages: 'dist/templates/html',
++            assets: 'dist/static',
+             precompress: true,
+             strict: true,
+         }),
