@@ -21,7 +21,7 @@ index 1111111..2222222 100644
 -            pages: '../templates/html',
 -            assets: '../static/v1',
 +            pages: 'dist/templates/html',
-+            assets: 'dist/static',
++            assets: 'dist/static/v1',
              precompress: true,
              strict: true,
          }),
