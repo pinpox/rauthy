@@ -22,12 +22,12 @@
 
           patchFlags = [ "-p2" ];
 
-          npmDepsHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          npmDepsHash = "sha256-nOxsOdJG5iz8bW6Ogyzk/2RB+lMF5yJD47p8StZ/Vvg=";
 
           installPhase = ''
             runHook preInstall
-            mkdir -p $out/lib/node_modules/frontend/dist
-            cp -r dist/* $out/lib/node_modules/frontend/dist/
+            mkdir -p $out
+            cp -r dist/* $out/
             runHook postInstall
           '';
         };
@@ -53,8 +53,8 @@
           ];
 
           preBuild = ''
-            cp -r ${frontend}/lib/node_modules/frontend/dist/templates/html/ templates/html
-            cp -r ${frontend}/lib/node_modules/frontend/dist/static/ static
+            cp -r ${frontend}/templates/html/ templates/html
+            cp -r ${frontend}/static/ static
           '';
 
           doCheck = false;
